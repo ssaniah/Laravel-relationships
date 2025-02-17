@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,10 +9,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use  HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Atribut yang dapat diisi secara massal (mass assignable).
      *
      * @var array<int, string>
      */
@@ -24,7 +23,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Atribut yang harus disembunyikan saat serialisasi (misalnya untuk JSON).
      *
      * @var array<int, string>
      */
@@ -34,28 +33,30 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * Atribut yang harus dikonversi ke tipe tertentu.
      *
      * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     /**
-     * phone
+     * Menentukan hubungan antara model User dan Phone.
+     * Setiap User dapat memiliki satu Phone.
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function phone()
     {
-    	return $this->hasOne(Phone::class);
+        return $this->hasOne(Phone::class);
     }
-    
+
     /**
-     * roles
+     * Menentukan hubungan antara model User dan Role.
+     * Setiap User dapat memiliki banyak Role melalui tabel pivot 'user_role'.
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function roles()
     {

@@ -10,9 +10,10 @@ class Post extends Model
     use HasFactory;
     
     /**
-     * comments
+     * Menentukan hubungan antara model Post dan Comment.
+     * Setiap Post dapat memiliki banyak Comment.
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()
     {

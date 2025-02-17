@@ -13,10 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //get all posts from Model
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->get(); // Mengambil semua post dari model, diurutkan berdasarkan yang terbaru
 
-        //passing posts to view
-        return view('posts', compact('posts'));
+        return view('posts', compact('posts')); // Mengirim data posts ke view
     }
 }

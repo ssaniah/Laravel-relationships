@@ -16,6 +16,7 @@ class Comment extends Model
      */
     public function post()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Post::class);// Menentukan hubungan bahwa setiap komentar berhubungan dengan satu post
     }
 }
+    

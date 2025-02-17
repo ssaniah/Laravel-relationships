@@ -9,11 +9,12 @@ class Phone extends Model
 {
     use HasFactory;
     
-    /**
-     * user
+   /**
+     * Menentukan hubungan antara model Phone dan User.
+     * Setiap Phone dimiliki oleh seorang User.
      *
-     * @return void
-     */
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo*/
+     
     public function user()
     {
         return $this->belongsTo(User::class);
